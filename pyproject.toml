@@ -5,7 +5,6 @@ description = "AI-powered Ableton Live control with 200+ tools - supports Claude
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    {name = "theflu-cymk", email = "55250358+theflu-cymk@users.noreply.github.com"},
     {name = "theflu-cymk", email = "55250358+theflu-cymk@users.noreply.github.com"}
 ]
 maintainers = [
