@@ -19,6 +19,23 @@ def create_instance(c_instance):
     """Create and return the AbletonMCP script instance"""
     return AbletonMCP(c_instance)
 
+_gap_commands = None
+
+def _load_gap_commands():
+    """Load enableton_commands.py from this folder. Missing file leaves old commands working."""
+    global _gap_commands
+    if _gap_commands is not None:
+        return _gap_commands
+    try:
+        from . import enableton_commands as gap
+    except (ImportError, ValueError, SyntaxError):
+        try:
+            import enableton_commands as gap
+        except (ImportError, SyntaxError):
+            return None
+    _gap_commands = gap
+    return gap
+
 class AbletonMCP(ControlSurface):
     """AbletonMCP Remote Script for Ableton Live"""
 
@@ -659,6 +676,8 @@ class AbletonMCP(ControlSurface):
                 
                 # Define a function to execute on the main thread
                 def main_thread_task():
+                    previous_main = getattr(self, "_inside_main_thread_task", False)
+                    self._inside_main_thread_task = True
                     try:
                         result = None
                         if command_type == "create_midi_track":
@@ -1339,13 +1358,20 @@ class AbletonMCP(ControlSurface):
                         self.log_message("Error in main thread task: " + str(e))
                         self.log_message(traceback.format_exc())
                         response_queue.put({"status": "error", "message": str(e)})
+                    finally:
+                        self._inside_main_thread_task = previous_main
                 
-                # Schedule the task to run on the main thread
-                try:
-                    self.schedule_message(0, main_thread_task)
-                except AssertionError:
-                    # If we're already on the main thread, execute directly
+                # Schedule the task to run on the main thread.
+                # A nested call (batch) is already on the main thread and must
+                # run inline, or the waiter deadlocks waiting for itself.
+                if getattr(self, "_inside_main_thread_task", False):
                     main_thread_task()
+                else:
+                    try:
+                        self.schedule_message(0, main_thread_task)
+                    except AssertionError:
+                        # If we're already on the main thread, execute directly
+                        main_thread_task()
                 
                 # Wait for the response with a timeout
                 try:
@@ -1402,8 +1428,16 @@ class AbletonMCP(ControlSurface):
                 item_uri = params.get("item_uri", "")
                 response["result"] = self._load_browser_item_to_return(return_index, item_uri)
             else:
-                response["status"] = "error"
-                response["message"] = f"Unknown command: {command_type}. Available commands include: get_session_info, get_track_info, set_track_volume, set_track_pan, create_clip, add_notes_to_clip, fire_scene, load_browser_item, etc."
+                gap_response = self._dispatch_gap_command(command_type, params)
+                if gap_response is None:
+                    response["status"] = "error"
+                    response["message"] = "Unknown command: {0}. Available commands include: get_session_info, get_track_info, set_track_volume, set_track_pan, create_clip, add_notes_to_clip, fire_scene, load_browser_item, etc.".format(command_type)
+                else:
+                    response["status"] = gap_response.get("status", "success")
+                    if response["status"] == "error":
+                        response["message"] = gap_response.get("message", "Unknown error")
+                    else:
+                        response["result"] = gap_response.get("result", {})
         except Exception as e:
             self.log_message("Error processing command: " + str(e))
             self.log_message(traceback.format_exc())
@@ -1411,7 +1445,53 @@ class AbletonMCP(ControlSurface):
             response["message"] = str(e)
         
         return response
-    
+
+    def _dispatch_gap_command(self, command_type, params):
+        """Run a command from enableton_commands.py, or return None if it is not one."""
+        gap = _load_gap_commands()
+        if gap is None:
+            return None
+        handler = gap.lookup(command_type)
+        if handler is None:
+            return None
+        try:
+            if command_type in gap.READ_COMMANDS:
+                result = handler(self, params or {})
+                return {"status": "success", "result": result}
+            return self._run_on_main_thread(lambda: handler(self, params or {}))
+        except Exception as e:
+            self.log_message("Error in " + str(command_type) + ": " + str(e))
+            self.log_message(traceback.format_exc())
+            return {"status": "error", "message": str(e)}
+
+    def _run_on_main_thread(self, fn):
+        """Run fn on Live's main thread and return a status/result dict."""
+        response_queue = queue.Queue(maxsize=10)
+
+        def task():
+            previous = getattr(self, "_inside_main_thread_task", False)
+            self._inside_main_thread_task = True
+            try:
+                response_queue.put({"status": "success", "result": fn()})
+            except Exception as e:
+                self.log_message("Error in main thread task: " + str(e))
+                self.log_message(traceback.format_exc())
+                response_queue.put({"status": "error", "message": str(e)})
+            finally:
+                self._inside_main_thread_task = previous
+
+        if getattr(self, "_inside_main_thread_task", False):
+            task()
+        else:
+            try:
+                self.schedule_message(0, task)
+            except AssertionError:
+                task()
+        try:
+            return response_queue.get(timeout=10.0)
+        except queue.Empty:
+            return {"status": "error", "message": "Timeout waiting for operation to complete"}
+
     # Command implementations
 
     # Validation helpers

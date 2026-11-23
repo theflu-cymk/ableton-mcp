@@ -9,3 +9,6 @@ wheels/
 # Virtual environments
 .venv
 .DS_Store
+
+# local build/scratch artifacts
+.build/

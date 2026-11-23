@@ -1,0 +1,534 @@
+{
+  "enableton_version": "0.1.0b2",
+  "upstream_version": "1.8.1",
+  "catalog_tools": 242,
+  "already_exposed_here": 80,
+  "portable_now": 116,
+  "blocked_on_live_side": 46,
+  "missing_commands": [
+    "batch",
+    "capture_and_insert_scene",
+    "clip_op",
+    "create_audio_clip",
+    "create_take_lane",
+    "delete_arrangement_clip",
+    "duplicate_clip_to",
+    "duplicate_session_clip_to_arrangement",
+    "get_arrangement_clips",
+    "get_device_routing",
+    "get_master_device_parameters",
+    "get_master_meters",
+    "get_return_device_parameters",
+    "get_session_snapshot",
+    "jump_to_locator",
+    "load_device_to_master",
+    "load_device_to_return",
+    "preview_browser_item",
+    "rack_variation",
+    "replace_simpler_sample",
+    "set_ableton_link",
+    "set_clip_audio",
+    "set_clip_groove",
+    "set_clip_signature",
+    "set_crossfade_assign",
+    "set_device_enabled",
+    "set_device_routing",
+    "set_drum_pad",
+    "set_fold_state",
+    "set_loop",
+    "set_record_mode",
+    "set_send",
+    "set_session_record",
+    "set_simpler_playback_mode",
+    "set_song_scale",
+    "set_time_signature",
+    "set_track_routing",
+    "stop_browser_preview",
+    "switch_to_arrangement_view",
+    "trigger_session_record",
+    "try_save_project",
+    "write_automation"
+  ],
+  "details": {
+    "duplicates": [
+      "add_notes_to_clip",
+      "back_to_arranger",
+      "capture_midi",
+      "clear_automation",
+      "continue_playing",
+      "create_audio_track",
+      "create_clip",
+      "create_locator",
+      "create_midi_track",
+      "create_return_track",
+      "create_scene",
+      "delete_clip",
+      "delete_device",
+      "delete_return_track",
+      "delete_scene",
+      "delete_track",
+      "detect_clip_key",
+      "detect_track_key",
+      "duplicate_scene",
+      "duplicate_track",
+      "edit_notes",
+      "fire_clip",
+      "fire_scene",
+      "generate_bassline",
+      "generate_drum_pattern",
+      "get_browser_items_at_path",
+      "get_browser_tree",
+      "get_clip_info",
+      "get_clip_notes",
+      "get_device_parameters",
+      "get_drum_pads",
+      "get_grooves",
+      "get_group_info",
+      "get_locators",
+      "get_rack_chains",
+      "get_return_tracks",
+      "get_scale_info",
+      "get_session_info",
+      "get_session_snapshot",
+      "get_track_info",
+      "get_track_meters",
+      "get_track_routing",
+      "humanize_clip",
+      "jump_by",
+      "jump_to_cue",
+      "load_drum_kit",
+      "load_instrument_or_effect",
+      "quantize_clip",
+      "re_enable_automation",
+      "redo",
+      "search_browser",
+      "set_arrangement_overdub",
+      "set_arrangement_time",
+      "set_clip_color",
+      "set_clip_loop",
+      "set_clip_name",
+      "set_clip_trigger_quantization",
+      "set_crossfader",
+      "set_device_parameter",
+      "set_groove_amount",
+      "set_master_volume",
+      "set_metronome",
+      "set_scene_name",
+      "set_session_automation_record",
+      "set_swing_amount",
+      "set_tempo",
+      "set_track_arm",
+      "set_track_color",
+      "set_track_monitoring",
+      "set_track_mute",
+      "set_track_name",
+      "set_track_pan",
+      "set_track_solo",
+      "set_track_volume",
+      "start_playback",
+      "stop_all_clips",
+      "stop_clip",
+      "stop_playback",
+      "tap_tempo",
+      "undo"
+    ],
+    "portable": [
+      "adg_analyze",
+      "adg_edition",
+      "adg_summary",
+      "als_details",
+      "als_detect_key",
+      "als_diff",
+      "als_extract_midi",
+      "als_find_unfinished",
+      "als_list_tracks",
+      "als_summary",
+      "analyze_audio_describe",
+      "analyze_audio_file",
+      "analyze_energy",
+      "analyze_frequency_clash",
+      "analyze_song_structure",
+      "analyze_warp_audio",
+      "annotate_arrangement",
+      "apply_audio_repair",
+      "apply_bass_movement",
+      "apply_instrument_assignment",
+      "apply_recipe",
+      "apply_song_draft",
+      "apply_track_alignment",
+      "apply_track_preparation",
+      "apply_warp_repair",
+      "artist_bass_catalog",
+      "audit_warp_clip",
+      "bass_design_catalog",
+      "bass_resampling_workflow",
+      "batch_warp_audit",
+      "build_remix_session",
+      "compare_remix_previews",
+      "compare_warp_reference",
+      "create_arrangement_audio_clip",
+      "create_bass_phrase",
+      "create_native_bass",
+      "create_structure_track",
+      "delete_chain",
+      "delete_cue_point",
+      "delete_live_clip_notes",
+      "describe_capabilities",
+      "describe_device",
+      "describe_live_access",
+      "describe_tool_families",
+      "describe_warp_workflow",
+      "generate_additive",
+      "generate_chord_progression",
+      "generate_euclidean_drums",
+      "generate_genre_progression",
+      "generate_groove",
+      "generate_melody",
+      "generate_phase",
+      "generate_voiced_progression",
+      "generate_walking_bass",
+      "get_audio_clip_timing",
+      "get_clip_envelope",
+      "get_live_clip_notes",
+      "get_live_mixer",
+      "get_nested_device_parameters",
+      "get_scenes",
+      "get_sound_design_parameters",
+      "groove_alignment_report",
+      "groove_marker_plan",
+      "groove_offset_report",
+      "guide_halftime_remix_workflow",
+      "guide_song_draft",
+      "inject_saved_clip_envelope",
+      "insert_chain",
+      "insert_device_to_chain",
+      "insert_live_clip_notes",
+      "inspect_live_device_tree",
+      "inspect_master_chain",
+      "inspect_rack",
+      "inspect_remix_session",
+      "inspect_sub_clip",
+      "list_known_devices",
+      "list_plugin_aliases",
+      "list_recipes",
+      "local_onsets_to_notes",
+      "map_rack_blend_macro",
+      "mastering_recipe_catalog",
+      "modify_live_clip_notes",
+      "plan_audio_repair",
+      "plan_halftime_remix_workflow",
+      "plan_instrument_assignment",
+      "plan_remix_midi_cleanup",
+      "plan_song_draft",
+      "plan_track_alignment",
+      "plan_track_preparation",
+      "prepare_remix_session",
+      "preview_bass_design",
+      "preview_mastering_plan",
+      "preview_remix_session",
+      "preview_warp_repair",
+      "quantize_notes_to_groove",
+      "read_live_object",
+      "refine_halftime_remix_workflow",
+      "refine_song_draft",
+      "resolve_plugin_parameter",
+      "retime_warp_clip",
+      "scan_audio_problems",
+      "scan_clip_audio_problems",
+      "search_production_recipes",
+      "set_chain_device_parameter",
+      "set_eq_bands",
+      "set_live_mixer",
+      "set_master_device_parameter",
+      "set_nested_device_parameters",
+      "set_plugin_parameter",
+      "set_return_device_parameter",
+      "set_sound_design_parameters",
+      "tearout_gun_blueprint",
+      "transform_clip",
+      "write_clip_envelope",
+      "write_drum_grid",
+      "write_live_object"
+    ],
+    "blocked": [
+      {
+        "tool": "analyze_mix",
+        "missing": [
+          "get_session_snapshot"
+        ]
+      },
+      {
+        "tool": "batch_commands",
+        "missing": [
+          "batch"
+        ]
+      },
+      {
+        "tool": "capture_and_insert_scene",
+        "missing": [
+          "capture_and_insert_scene"
+        ]
+      },
+      {
+        "tool": "clip_operation",
+        "missing": [
+          "clip_op"
+        ]
+      },
+      {
+        "tool": "create_audio_clip",
+        "missing": [
+          "create_audio_clip"
+        ]
+      },
+      {
+        "tool": "create_take_lane",
+        "missing": [
+          "create_take_lane"
+        ]
+      },
+      {
+        "tool": "delete_arrangement_clip",
+        "missing": [
+          "delete_arrangement_clip"
+        ]
+      },
+      {
+        "tool": "detect_session_key",
+        "missing": [
+          "get_session_snapshot"
+        ]
+      },
+      {
+        "tool": "duplicate_clip_to",
+        "missing": [
+          "duplicate_clip_to"
+        ]
+      },
+      {
+        "tool": "duplicate_to_arrangement",
+        "missing": [
+          "duplicate_session_clip_to_arrangement"
+        ]
+      },
+      {
+        "tool": "get_arrangement_clips",
+        "missing": [
+          "get_arrangement_clips"
+        ]
+      },
+      {
+        "tool": "get_device_routing",
+        "missing": [
+          "get_device_routing"
+        ]
+      },
+      {
+        "tool": "get_master_device_parameters",
+        "missing": [
+          "get_master_device_parameters"
+        ]
+      },
+      {
+        "tool": "get_master_meters",
+        "missing": [
+          "get_master_meters"
+        ]
+      },
+      {
+        "tool": "get_return_device_parameters",
+        "missing": [
+          "get_return_device_parameters"
+        ]
+      },
+      {
+        "tool": "jump_to_locator",
+        "missing": [
+          "jump_to_locator"
+        ]
+      },
+      {
+        "tool": "load_device_to_master",
+        "missing": [
+          "load_device_to_master"
+        ]
+      },
+      {
+        "tool": "load_device_to_return",
+        "missing": [
+          "load_device_to_return"
+        ]
+      },
+      {
+        "tool": "preview_browser_item",
+        "missing": [
+          "preview_browser_item"
+        ]
+      },
+      {
+        "tool": "rack_variation",
+        "missing": [
+          "rack_variation"
+        ]
+      },
+      {
+        "tool": "record_section",
+        "missing": [
+          "get_arrangement_clips",
+          "set_record_mode",
+          "set_track_routing"
+        ]
+      },
+      {
+        "tool": "replace_simpler_sample",
+        "missing": [
+          "replace_simpler_sample"
+        ]
+      },
+      {
+        "tool": "save_set",
+        "missing": [
+          "try_save_project"
+        ]
+      },
+      {
+        "tool": "session_diff",
+        "missing": [
+          "get_session_snapshot"
+        ]
+      },
+      {
+        "tool": "set_ableton_link",
+        "missing": [
+          "set_ableton_link"
+        ]
+      },
+      {
+        "tool": "set_clip_audio",
+        "missing": [
+          "set_clip_audio"
+        ]
+      },
+      {
+        "tool": "set_clip_groove",
+        "missing": [
+          "set_clip_groove"
+        ]
+      },
+      {
+        "tool": "set_clip_signature",
+        "missing": [
+          "set_clip_signature"
+        ]
+      },
+      {
+        "tool": "set_crossfade_assign",
+        "missing": [
+          "set_crossfade_assign"
+        ]
+      },
+      {
+        "tool": "set_device_enabled",
+        "missing": [
+          "set_device_enabled"
+        ]
+      },
+      {
+        "tool": "set_device_routing",
+        "missing": [
+          "set_device_routing"
+        ]
+      },
+      {
+        "tool": "set_drum_pad",
+        "missing": [
+          "set_drum_pad"
+        ]
+      },
+      {
+        "tool": "set_fold_state",
+        "missing": [
+          "set_fold_state"
+        ]
+      },
+      {
+        "tool": "set_loop",
+        "missing": [
+          "set_loop"
+        ]
+      },
+      {
+        "tool": "set_record_mode",
+        "missing": [
+          "set_record_mode"
+        ]
+      },
+      {
+        "tool": "set_send",
+        "missing": [
+          "set_send"
+        ]
+      },
+      {
+        "tool": "set_session_record",
+        "missing": [
+          "set_session_record"
+        ]
+      },
+      {
+        "tool": "set_simpler_playback_mode",
+        "missing": [
+          "set_simpler_playback_mode"
+        ]
+      },
+      {
+        "tool": "set_song_scale",
+        "missing": [
+          "set_song_scale"
+        ]
+      },
+      {
+        "tool": "set_time_signature",
+        "missing": [
+          "set_time_signature"
+        ]
+      },
+      {
+        "tool": "set_track_routing",
+        "missing": [
+          "set_track_routing"
+        ]
+      },
+      {
+        "tool": "setup_session",
+        "missing": [
+          "batch"
+        ]
+      },
+      {
+        "tool": "stop_browser_preview",
+        "missing": [
+          "stop_browser_preview"
+        ]
+      },
+      {
+        "tool": "switch_to_arrangement_view",
+        "missing": [
+          "switch_to_arrangement_view"
+        ]
+      },
+      {
+        "tool": "trigger_session_record",
+        "missing": [
+          "trigger_session_record"
+        ]
+      },
+      {
+        "tool": "write_automation",
+        "missing": [
+          "write_automation"
+        ]
+      }
+    ]
+  }
+}

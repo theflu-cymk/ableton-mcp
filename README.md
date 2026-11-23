@@ -4,7 +4,7 @@
 
 AbletonMCP connects Ableton Live to Claude AI through the Model Context Protocol (MCP), allowing Claude to directly interact with and control Ableton Live. This integration enables AI-assisted music production, track creation, and Live session manipulation.
 
-**200+ tools** for near-complete Ableton Live Object Model (LOM) coverage including AI-powered music generation.
+**158 MCP tools** and **245 REST commands** covering the Ableton Live Object Model (LOM), including AI-powered music generation. Every MCP tool carries read-only/destructive hints. See [docs/ENABLETON_PORT.md](docs/ENABLETON_PORT.md) for which of Enableton's typed tools are ported and what is still missing.
 
 ## Three Ways to Use AbletonMCP
 
@@ -107,6 +107,18 @@ brew install uv
 # Other platforms
 # See https://docs.astral.sh/uv/getting-started/installation/
 ```
+
+### Windows Installer (Recommended)
+
+A one-step installer is included. From the repository root:
+
+```powershell
+.\installer\Install-AbletonMCP.cmd
+```
+
+It creates an isolated Python environment (via `uv`, which can fetch Python 3.13), installs the MCP server and REST API, copies the remote script to `<Documents>\Ableton\User Library\Remote Scripts\AbletonMCP`, and builds the Max for Live device into your User Library for the newest installed Live version. Add `-ConfigureClaude` to register the MCP server with Claude Desktop. Uninstall via Settings > Apps or `installer\Uninstall-AbletonMCP.cmd`.
+
+See [installer/README.md](installer/README.md) for options.
 
 ### Claude Desktop Configuration
 
@@ -280,6 +292,7 @@ See [AbletonMCP_M4L/README.md](AbletonMCP_M4L/README.md) for detailed setup.
 ## Documentation
 
 - [MANUAL.md](docs/MANUAL.md) - Complete command reference with examples and a step-by-step techno track tutorial
+- [ENABLETON_PORT.md](docs/ENABLETON_PORT.md) - Enableton tool-catalogue port: what runs today, what needs new bridge commands
 - [CONFIG.md](docs/CONFIG.md) - Configuration and environment variables
 
 ## Troubleshooting
@@ -339,7 +352,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Credits
 
 - AbletonMCP by [theflu-cymk](https://github.com/theflu-cymk)
-- Extended with 200+ tools, REST API, M4L device, and AI helpers
+- Extended with 158 MCP tools, 245 REST commands, M4L device, and AI helpers
 
 ## Disclaimer
 

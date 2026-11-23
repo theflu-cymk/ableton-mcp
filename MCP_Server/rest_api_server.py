@@ -193,6 +193,21 @@ ALLOWED_COMMANDS = {
     "get_all_track_names",
     # Scrub
     "scrub_by",
+    # Enableton gap commands (AbletonMCP_Remote_Script/enableton_commands.py)
+    "batch", "capture_and_insert_scene", "clip_op", "create_audio_clip",
+    "create_take_lane", "delete_arrangement_clip", "duplicate_clip_to",
+    "duplicate_session_clip_to_arrangement", "get_arrangement_clips",
+    "get_device_routing", "get_master_device_parameters", "get_master_meters",
+    "get_return_device_parameters", "get_session_snapshot", "jump_to_locator",
+    "load_device_to_master", "load_device_to_return", "preview_browser_item",
+    "rack_variation", "replace_simpler_sample", "set_ableton_link",
+    "set_clip_audio", "set_clip_groove", "set_clip_signature",
+    "set_crossfade_assign", "set_device_enabled", "set_device_routing",
+    "set_drum_pad", "set_fold_state", "set_loop", "set_record_mode", "set_send",
+    "set_session_record", "set_simpler_playback_mode", "set_song_scale",
+    "set_time_signature", "set_track_routing", "stop_browser_preview",
+    "switch_to_arrangement_view", "trigger_session_record", "try_save_project",
+    "write_automation",
 }
 
 # ============================================================================
